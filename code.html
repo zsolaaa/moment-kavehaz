@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Moment Kávéház - A kávé és cukrászat művészete</title>
+<meta name="description" content="Moment Kávéház — kézműves cukrászat és prémium specialty kávék Budapest szívében, az Andrássy úton. Látogasson el hozzánk, és élje át a tökéletes pillanatot."/>
+<meta property="og:title" content="Moment Kávéház"/>
+<meta property="og:description" content="Kézműves cukrászat és prémium kávék Budapest szívében."/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="hu_HU"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "on-surface": "#2c160e",
+                    "on-secondary": "#ffffff",
+                    "surface": "#fff8f6",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#827472",
+                    "on-primary-container": "#ae8d87",
+                    "on-secondary-container": "#785a1a",
+                    "inverse-on-surface": "#ffede8",
+                    "on-surface-variant": "#504442",
+                    "tertiary": "#191914",
+                    "background": "#fff8f6",
+                    "on-primary-fixed": "#2b1613",
+                    "surface-container-highest": "#ffdbd0",
+                    "tertiary-fixed": "#e6e2da",
+                    "surface-container": "#ffe9e3",
+                    "on-tertiary-fixed": "#1c1c17",
+                    "surface-container-low": "#fff1ed",
+                    "surface-dim": "#fbd1c4",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#261900",
+                    "inverse-primary": "#e3beb8",
+                    "primary-fixed": "#ffdad4",
+                    "tertiary-fixed-dim": "#c9c6bf",
+                    "surface-tint": "#745853",
+                    "primary-fixed-dim": "#e3beb8",
+                    "surface-container-high": "#ffe2da",
+                    "on-tertiary-fixed-variant": "#484741",
+                    "inverse-surface": "#442a22",
+                    "secondary": "#775a19",
+                    "primary": "#271310",
+                    "surface-variant": "#ffdbd0",
+                    "on-tertiary-container": "#97948d",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#5b403c",
+                    "secondary-fixed-dim": "#e9c176",
+                    "secondary-fixed": "#ffdea5",
+                    "secondary-container": "#fed488",
+                    "surface-bright": "#fff8f6",
+                    "outline-variant": "#d3c3c0",
+                    "error": "#ba1a1a",
+                    "tertiary-container": "#2e2d28",
+                    "on-secondary-fixed-variant": "#5d4201",
+                    "on-background": "#2c160e",
+                    "primary-container": "#3e2723"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+                },
+                "spacing": {
+                    "gutter": "24px",
+                    "base": "8px",
+                    "lg": "48px",
+                    "md": "24px",
+                    "sm": "12px",
+                    "xs": "4px",
+                    "xl": "80px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "16px"
+                },
+                "fontFamily": {
+                    "label-md": ["Work Sans"],
+                    "display-lg": ["Playfair Display"],
+                    "headline-sm": ["Playfair Display"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "headline-md": ["Playfair Display"],
+                    "body-lg": ["Work Sans"],
+                    "body-md": ["Work Sans"]
+                },
+                "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                }
+            }
+        }
+    }
+</script>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    /* Smooth scroll only when motion is acceptable */
+    @media (prefers-reduced-motion: no-preference) {
+        html { scroll-behavior: smooth; }
+    }
+
+    .moment-divider {
+        position: relative;
+        height: 1px;
+        background-color: theme('colors.secondary');
+        width: 100%;
+        max-width: 120px;
+        margin: 0 auto;
+    }
+
+    .hero-overlay {
+        background: linear-gradient(to bottom, rgba(39,19,16,0.55) 0%, rgba(39,19,16,0.75) 100%);
+    }
+
+    /* Scroll chevron — compositor-only (opacity + transform) */
+    @keyframes fade-pulse {
+        0%, 100% { opacity: 0.6; transform: translateY(0); }
+        50%       { opacity: 1;   transform: translateY(5px); }
+    }
+    .scroll-hint {
+        animation: fade-pulse 2.4s ease-in-out infinite;
+    }
+
+    /* ─── Custom easing curves ───────────────────────────── */
+    :root {
+        --ease-out-expo:    cubic-bezier(0.23, 1, 0.32, 1);
+        --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    /* ─── Hero stagger — @starting-style (Chrome 117+, Firefox 129+, Safari 17.5+) ── */
+    .hero-item {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 600ms var(--ease-out-expo),
+                    transform 600ms var(--ease-out-expo);
+    }
+    @starting-style {
+        .hero-item { opacity: 0; transform: translateY(24px); }
+    }
+    .hero-item:nth-child(1) { transition-delay: 100ms; }
+    .hero-item:nth-child(2) { transition-delay: 200ms; }
+    .hero-item:nth-child(3) { transition-delay: 320ms; }
+    .hero-item:nth-child(4) { transition-delay: 440ms; }
+
+    /* ─── Scroll-reveal alapállapot ──────────────────────── */
+    .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 500ms var(--ease-out-expo),
+                    transform 500ms var(--ease-out-expo);
+    }
+    .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* ─── About kép clip-path reveal ─────────────────────── */
+    .about-image {
+        clip-path: inset(0 0 100% 0);
+        transition: clip-path 900ms var(--ease-in-out-strong);
+    }
+    .about-image.is-visible {
+        clip-path: inset(0 0 0% 0);
+    }
+
+    /* ─── CTA gombok: scale transition hozzáadva ─────────── */
+    a.bg-secondary, button.bg-secondary {
+        transition: opacity 150ms ease,
+                    transform 130ms var(--ease-out-expo) !important;
+    }
+
+    /* Reduced motion overrides */
+    @media (prefers-reduced-motion: reduce) {
+        .scroll-hint { animation: none; opacity: 0.7; }
+        .group:hover img { transform: none !important; }
+        .hero-item { transition: none; }
+        .reveal { transition: none; opacity: 1; transform: none; }
+        .about-image { transition: none; clip-path: none; }
+    }
+
+    /* Focus ring */
+    :focus-visible {
+        outline: 2px solid #775a19;
+        outline-offset: 2px;
+    }
+
+    /* Mobile menu — grid-template-rows trick (compositor-friendly, avoids max-height) */
+    #mobile-menu {
+        display: grid;
+        grid-template-rows: 0fr;
+        opacity: 0;
+        transition: grid-template-rows 0.3s ease-out, opacity 0.25s ease-out;
+    }
+    #mobile-menu.open {
+        grid-template-rows: 1fr;
+        opacity: 1;
+    }
+    #mobile-menu > div {
+        overflow: hidden;
+    }
+
+    /* Card hover — explicit easing, touch guard, kép zoom 350ms */
+    .product-card {
+        transition: transform 350ms var(--ease-out-expo),
+                    box-shadow 350ms var(--ease-out-expo);
+    }
+    .product-card .group img {
+        transition: transform 350ms var(--ease-out-expo);
+    }
+    @media (hover: hover) and (pointer: fine) {
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(39,19,16,0.12);
+        }
+        .product-card .group:hover img {
+            transform: scale(1.05);
+        }
+    }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body-md">
+
+<!-- Skip to main content -->
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-secondary focus:text-on-secondary focus:px-4 focus:py-2 focus:rounded-lg focus:font-label-md">
+    Ugrás a tartalomhoz
+</a>
+
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/95 backdrop-blur-md border-b border-outline-variant/30 shadow-sm" aria-label="Főnavigáció">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 max-w-[1200px] mx-auto">
+
+        <!-- Logo -->
+        <a href="#home" class="flex items-center gap-3" aria-label="Moment Kávéház – főoldal">
+            <img src="logo.jpg" alt="Moment Kávéház logó" width="40" height="40" class="w-10 h-10 object-contain rounded-full"/>
+            <span class="font-display-lg text-headline-sm text-primary hidden sm:block">Moment Kávéház</span>
+        </a>
+
+        <!-- Desktop nav — proper ul/li semantic structure -->
+        <ul class="hidden md:flex gap-md items-center list-none m-0 p-0" role="list">
+            <li><a class="font-label-md text-label-md uppercase tracking-widest text-secondary font-semibold transition-colors duration-200" href="#home">Kezdőlap</a></li>
+            <li><a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors duration-200" href="#menu">Kínálatunk</a></li>
+            <li><a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors duration-200" href="#about">Rólunk</a></li>
+            <li><a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors duration-200" href="#contact">Kapcsolat</a></li>
+        </ul>
+
+        <!-- Desktop CTA -->
+        <a href="#contact" class="hidden md:block bg-secondary text-on-secondary px-6 py-2 font-label-md text-label-md uppercase tracking-widest hover:opacity-90 transition-opacity active:scale-95 rounded-lg">
+            Asztalfoglalás
+        </a>
+
+        <!-- Mobile hamburger -->
+        <button
+            id="hamburger"
+            class="md:hidden p-2 rounded-lg hover:bg-surface-container transition-colors"
+            aria-label="Menü megnyitása"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+        >
+            <span class="material-symbols-outlined text-primary" aria-hidden="true">menu</span>
+        </button>
+    </div>
+
+    <!-- Mobile menu — grid-template-rows animated -->
+    <div id="mobile-menu">
+        <div class="flex flex-col px-margin-mobile pb-4 bg-surface border-t border-outline-variant/30">
+            <a class="font-label-md text-label-md uppercase tracking-widest text-secondary font-semibold py-3 border-b border-outline-variant/20" href="#home">Kezdőlap</a>
+            <a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-secondary py-3 border-b border-outline-variant/20 transition-colors" href="#menu">Kínálatunk</a>
+            <a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-secondary py-3 border-b border-outline-variant/20 transition-colors" href="#about">Rólunk</a>
+            <a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-secondary py-3 border-b border-outline-variant/20 transition-colors" href="#contact">Kapcsolat</a>
+            <a href="#contact" class="mt-4 bg-secondary text-on-secondary px-6 py-3 font-label-md text-label-md uppercase tracking-widest text-center hover:opacity-90 transition-opacity rounded-lg">
+                Asztalfoglalás
+            </a>
+        </div>
+    </div>
+</nav>
+
+<main id="main-content">
+
+    <!-- Hero Section — <section> nem <header>, mert a <nav> a page header -->
+    <section class="relative min-h-dvh flex items-center justify-center text-center px-gutter overflow-hidden" id="home" aria-label="Főoldal hero">
+        <div class="absolute inset-0 z-0">
+            <img
+                alt="Moment Kávéház belső tér — meleg, borostyánsárga fény, faasztalok és prémium kávégép"
+                class="w-full h-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEj_yh4YTcHC4okOixuQnOdSBzaf3no0kac5C1By24wjPCvVy0WLxb0E7DYEmUoF00LnMaEYGHvENs9W5tfR5ifvlVYj6_y08h3FvlBCiId-3k4abkd0kQDF25kdYKlMpDbWfhROFDqoQZmrE6DdZZ9LYz74RwbOXk-BSVtdXonpxJkGJFeF_zPkTKSwvB0wfiYEoMnpBBZ0la3PRPHC8LrS41p7gXNISETSC2Eu_qFKlTZZA85UIQu_uEetswL7tutiTy0tPtGw"
+                fetchpriority="high"
+                loading="eager"
+                width="1920"
+                height="1080"
+            />
+            <div class="absolute inset-0 hero-overlay" aria-hidden="true"></div>
+        </div>
+
+        <div class="relative z-10 max-w-3xl flex flex-col items-center">
+            <!-- hero-item osztályok — stagger betöltésnél -->
+            <span class="hero-item font-label-md text-label-md uppercase text-surface/50 mb-8 tracking-[0.25em]" aria-label="Moment Kávéház, Budapest">Moment Kávéház &nbsp;·&nbsp; Budapest</span>
+            <h1 class="hero-item font-display-lg text-surface mb-6 text-center" style="font-size: clamp(2.5rem, 7vw, 5rem); line-height: 1.05; letter-spacing: -0.02em;">Ahol minden<br/>pillanat édes</h1>
+            <p class="hero-item font-body-lg text-body-lg text-surface/75 mb-10 max-w-md">Kézműves cukrászat és prémium specialty kávék Budapest szívén, az Andrássy úton.</p>
+            <a
+                class="hero-item bg-secondary text-on-secondary px-10 py-4 font-label-md text-label-md uppercase tracking-widest hover:opacity-90 shadow-lg active:scale-95 rounded-lg"
+                href="#menu"
+            >
+                Kínálatunk megtekintése
+            </a>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-hint" aria-hidden="true">
+            <span class="material-symbols-outlined text-surface text-3xl">expand_more</span>
+        </div>
+    </section>
+
+    <!-- Kínálatunk Section -->
+    <section class="py-xl bg-surface" id="menu" aria-labelledby="menu-heading">
+        <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="text-center mb-xl">
+                <h2 id="menu-heading" class="font-display-lg text-headline-md text-primary mb-4">Kézműves Remekműveink</h2>
+                <!-- Brand monogram divider — M betű, nem generikus ✦ -->
+                <div class="flex items-center gap-4 mb-4 max-w-xs mx-auto" role="presentation" aria-hidden="true">
+                    <div class="h-px flex-1 bg-secondary/35"></div>
+                    <span class="font-display-lg text-secondary border border-secondary/40 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-sm leading-none select-none">M</span>
+                    <div class="h-px flex-1 bg-secondary/35"></div>
+                </div>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">Minden egyes süteményünk egyedi műalkotás, melyet a legfinomabb francia alapanyagokból és szenvedéllyel készítünk el.</p>
+            </div>
+
+            <!-- Bento Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+
+                <!-- Nagy kártya — reveal osztály scroll-trigger-hez -->
+                <article class="md:col-span-8 product-card reveal group overflow-hidden bg-surface-container-low shadow-sm rounded-lg">
+                    <div class="relative aspect-[16/9] overflow-hidden rounded-t-lg">
+                        <img
+                            alt="Moment sütemény válogatás — szezonális desszertek közelről"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8eSHRfR3VP1YlqWmHAwWRUO-eoo1de6D5ptjBpNX9PgwI5xY0zcAk-iTJ1sxnmtAoOmprB2yL5iOvKiveRGvM0HNXADqnDetmd7U_8ZYvwEtP1XLQyS5bQmMOs5kaXMsqixlhr3oNwXMtNX8S0d6wqDnoX7hSMCDTkUH44-u7-Yk5S_kRH2KyYVuB-n2yYaGSE7wZOPH9jegHv_baGBKovfxtgX0aw9x_GaZfaKMb5p0wrFVPRrjUeyj22qc7rZhOU24inONUvg"
+                            loading="lazy"
+                            width="800"
+                            height="450"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-md" aria-hidden="true">
+                            <span class="text-surface font-label-md text-label-md uppercase tracking-widest">Napi Válogatásunk</span>
+                        </div>
+                    </div>
+                    <div class="p-md">
+                        <h3 class="font-display-lg text-headline-sm text-primary mb-2">Signature Kollekció</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant">Szezonális ízek, friss gyümölcsök és a legfinomabb csokoládék találkozása.</p>
+                    </div>
+                </article>
+
+                <!-- Kávé kártya -->
+                <article class="md:col-span-4 reveal flex flex-col justify-center p-md bg-primary text-on-primary shadow-sm rounded-lg">
+                    <span class="material-symbols-outlined text-secondary text-4xl mb-4" aria-hidden="true">coffee</span>
+                    <h3 class="font-display-lg text-headline-sm mb-4">Prémium Kávék</h3>
+                    <p class="font-body-md text-body-md text-on-primary-container mb-6">Saját pörkölésű specialty kávéinkat a fenntarthatóság jegyében, közvetlenül a farmerektől szerezzük be.</p>
+                    <dl>
+                        <div class="border-b border-secondary/30 pb-2 mb-2 flex justify-between">
+                            <dt class="font-label-md text-label-md">Espresso</dt>
+                            <dd class="font-label-md text-label-md">750 Ft</dd>
+                        </div>
+                        <div class="border-b border-secondary/30 pb-2 mb-2 flex justify-between">
+                            <dt class="font-label-md text-label-md">Cappuccino</dt>
+                            <dd class="font-label-md text-label-md">950 Ft</dd>
+                        </div>
+                        <div class="flex justify-between">
+                            <dt class="font-label-md text-label-md">Moment Latte</dt>
+                            <dd class="font-label-md text-label-md">1 250 Ft</dd>
+                        </div>
+                    </dl>
+                </article>
+
+                <!-- Kártya sor — eltérő col-span és aspect-ratio a ritmus kedvéért -->
+
+                <!-- Caramel Dream — széles tájkép arány -->
+                <article class="md:col-span-5 product-card reveal group overflow-hidden bg-surface-container-low shadow-sm rounded-lg">
+                    <div class="relative overflow-hidden rounded-t-lg" style="aspect-ratio: 5/3;">
+                        <img
+                            alt="Caramel Dream — selymes sós-karamell és mogyoró desszert"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs4EdVrqrA5EMfNH7kwG6sfc-pJVOK1Pc-c7ACxnvIL-KysTB6HlBp11uoMouex7BbtN8GfkoCcWM3DXiI8FfYQ_FXAwMMoaLI16T_6pZlMV4StZsHBs037ZVlkUAaWWS21JK3jFeS23nlQFlLRYWTk2Cb2ni9qdM0Z-aliqByXlq8q2453-suAYLUGuUsxY9VIe4OpFyp-OPeqOG8gQ0UnhWsskBTCd2eveiD_TOweS31KXeglB1CoF8kU9PAD9wA2Hn2r-XCrA"
+                            loading="lazy"
+                            width="500"
+                            height="300"
+                        />
+                    </div>
+                    <div class="p-md">
+                        <h3 class="font-display-lg text-headline-sm text-primary mb-2">Caramel Dream</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant">Selymes sós-karamell és mogyoró ropogós.</p>
+                    </div>
+                </article>
+
+                <!-- Grand Cru Choco — portré arány, csak kép + hover overlay -->
+                <article class="md:col-span-3 product-card reveal group overflow-hidden shadow-sm rounded-lg relative">
+                    <div class="relative overflow-hidden rounded-lg" style="aspect-ratio: 3/4;">
+                        <img
+                            alt="Grand Cru Choco — 70%-os étcsokoládé mousse bogyós gyümölcsökkel"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAOh0zzZlAM-wEbDAarUOwAhRSfZoQ6g0ZKuvSyJoIXTiEIvWh5v2wp-NlKUVH2D1fA9oca-bcHHmKCmkkY2Zv4tfkE-UHGcNOgz6tY1TUHtHxNatZdG77adntdq_ObGjBZW_LEgYMluJFGFtCcOKX2bL8IoL5GFD3xtM4goaimmdYEMMy4jfiVwP3gWKFNxvDG4hRlmmq8nUMzCeDsPqf_9lmsn8xyqQK4SDOBGpNHwtShoIVOZc-V4DRyCAi2Se-s66ey99Liw"
+                            loading="lazy"
+                            width="300"
+                            height="400"
+                        />
+                        <!-- Cím overlay a képen -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent flex flex-col justify-end p-md">
+                            <h3 class="font-display-lg text-headline-sm text-surface mb-1">Grand Cru Choco</h3>
+                            <p class="font-body-md text-body-md text-surface/70 text-sm">70%-os étcsokoládé mousse.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Berry Symphony — szöveges kártya, kép nélkül, szezonális -->
+                <article class="md:col-span-4 reveal bg-surface-container-high rounded-lg p-lg flex flex-col justify-between" style="min-height: 280px;">
+                    <div>
+                        <span class="font-label-md text-label-md uppercase tracking-widest text-secondary mb-4 block">Szezonális különlegesség</span>
+                        <h3 class="font-display-lg text-headline-sm text-primary mb-4">Berry Symphony</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Friss málna és pisztácia krém omlós tésztán, kizárólag nyár elején, amíg a gyümölcs a legérettebb.</p>
+                    </div>
+                    <div class="flex items-center gap-2 mt-6">
+                        <span class="font-label-md text-label-md uppercase tracking-widest text-secondary text-xs">Június — Augusztus</span>
+                        <div class="h-px flex-1 bg-secondary/30"></div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Rólunk Section -->
+    <section class="py-xl bg-surface-container-low overflow-hidden" id="about" aria-labelledby="about-heading">
+        <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="flex flex-col md:flex-row gap-xl items-center">
+
+                <div class="w-full md:w-1/2 relative overflow-visible">
+                    <div class="absolute -top-4 -left-4 w-full h-full border-2 border-secondary/20 z-0 hidden md:block" aria-hidden="true"></div>
+                    <img
+                        alt="Chokolady — kézműves csokoládékészítő a standja előtt"
+                        class="about-image relative z-10 w-full aspect-[4/5] object-cover shadow-2xl rounded-lg"
+                        src="rolunk.jpg"
+                        width="600"
+                        height="750"
+                    />
+                </div>
+
+                <div class="w-full md:w-1/2">
+                    <span class="font-label-md text-label-md text-secondary uppercase tracking-widest mb-4 block">Rólam</span>
+                    <h2 id="about-heading" class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-6">Kézműves csokoládé, szívvel készítve</h2>
+                    <p class="font-body-lg text-body-lg text-on-surface mb-6 leading-relaxed">
+                        2014-ben találkoztam először a kézműves csokoládékészítés világával — ekkor már 14 éve dolgoztam egy multinacionális vállalatnál vezető pozícióban. Szerettem volna olyasmivel foglalkozni, ami másoknak is örömet okoz. A csokoládékészítés azonnal szerelem lett.
+                    </p>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">
+                        Kézműves tábláimat, töltött bon-bonjaimat és egyedi gyermektermékeimet természetes alapanyagokból, tartósítószer és mesterséges adalékok nélkül készítem — kiváló minőségű belga Callebaut és olasz Ariba csokoládéból, 100% figyelemmel a minőségre.
+                    </p>
+
+                    <figure class="border-l-0 mt-2">
+                        <div class="w-8 h-px bg-secondary mb-4"></div>
+                        <blockquote class="font-body-lg text-body-lg text-on-surface leading-relaxed mb-4 italic">
+                            „Minden napra egy falat ünnep!"
+                        </blockquote>
+                        <figcaption class="font-label-md text-label-md uppercase tracking-widest text-secondary text-xs">
+                            Chokolady &nbsp;·&nbsp; Kézműves csokoládé
+                        </figcaption>
+                    </figure>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer / Kapcsolat -->
+<footer class="bg-primary w-full py-xl" id="contact">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-md px-margin-mobile md:px-margin-desktop max-w-[1200px] mx-auto text-center md:text-left">
+
+        <!-- Brand & Contact -->
+        <div class="flex flex-col gap-sm">
+            <div class="flex items-center gap-3 justify-center md:justify-start mb-2">
+                <img src="logo.jpg" alt="Moment Kávéház logó" width="32" height="32" class="w-8 h-8 object-contain rounded-full"/>
+                <span class="font-display-lg text-headline-sm text-secondary-fixed">Moment Kávéház</span>
+            </div>
+            <address class="font-body-md text-body-md text-on-primary/70 not-italic">
+                Budapest, Andrássy út 12.<br/>
+                <a href="tel:+3612345678" class="hover:text-secondary-fixed transition-colors">+36 1 234 5678</a><br/>
+                <a href="mailto:hello@momentkavehaz.hu" class="hover:text-secondary-fixed transition-colors">hello@momentkavehaz.hu</a>
+            </address>
+        </div>
+
+        <!-- Nyitvatartás & Social -->
+        <div class="flex flex-col gap-sm">
+            <h3 class="font-label-md text-label-md uppercase tracking-widest text-secondary-fixed mb-2">Nyitvatartás</h3>
+            <p class="font-body-md text-body-md text-on-primary/70 mb-4">
+                Hétfő – Péntek: 08:00 – 20:00<br/>
+                Szombat – Vasárnap: 09:00 – 21:00
+            </p>
+            <div class="flex justify-center md:justify-start gap-md">
+                <a href="https://facebook.com/momentkavehaz" aria-label="Moment Kávéház Facebook oldala" class="text-on-primary/60 hover:text-secondary-fixed transition-colors" rel="noopener noreferrer" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                <a href="https://instagram.com/momentkavehaz" aria-label="Moment Kávéház Instagram oldala" class="text-on-primary/60 hover:text-secondary-fixed transition-colors" rel="noopener noreferrer" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="https://tiktok.com/@momentkavehaz" aria-label="Moment Kávéház TikTok oldala" class="text-on-primary/60 hover:text-secondary-fixed transition-colors" rel="noopener noreferrer" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.24 8.24 0 004.82 1.55V6.79a4.85 4.85 0 01-1.05-.1z"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Linkek -->
+        <div class="flex flex-col gap-sm">
+            <h3 class="font-label-md text-label-md uppercase tracking-widest text-secondary-fixed mb-2">Hasznos</h3>
+            <nav aria-label="Footer navigáció">
+                <ul class="flex flex-col gap-xs list-none m-0 p-0">
+                    <li><a class="font-body-md text-body-md text-on-primary/70 hover:text-secondary-fixed transition-colors duration-200" href="/impresszum">Impresszum</a></li>
+                    <li><a class="font-body-md text-body-md text-on-primary/70 hover:text-secondary-fixed transition-colors duration-200" href="/adatvedelem">Adatvédelem</a></li>
+                    <li><a class="font-body-md text-body-md text-on-primary/70 hover:text-secondary-fixed transition-colors duration-200" href="/karrier">Karrier</a></li>
+                    <li><a class="font-body-md text-body-md text-on-primary/70 hover:text-secondary-fixed transition-colors duration-200" href="/rendezveny">Rendezvényhelyszín</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+
+    <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop mt-xl pt-md border-t border-on-primary/10 text-center">
+        <p class="font-body-md text-body-md text-on-primary/50">© 2026 Moment Kávéház. A kávé és cukrászat művészete.</p>
+    </div>
+</footer>
+
+<script>
+    // Navbar shadow on scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('shadow-md', window.scrollY > 50);
+        nav.classList.toggle('shadow-sm', window.scrollY <= 50);
+    }, { passive: true });
+
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = hamburger.querySelector('.material-symbols-outlined');
+
+    hamburger.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+        hamburgerIcon.textContent = isOpen ? 'close' : 'menu';
+        hamburger.setAttribute('aria-label', isOpen ? 'Menü bezárása' : 'Menü megnyitása');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            hamburgerIcon.textContent = 'menu';
+            hamburger.setAttribute('aria-label', 'Menü megnyitása');
+        });
+    });
+
+    // ── Bento grid kártyák stagger reveal ──────────────────
+    const revealItems = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            // Kártyák egy grid-en belül stagger-elve jelennek meg
+            const siblings = Array.from(
+                entry.target.closest('.grid')?.querySelectorAll('.reveal') || [entry.target]
+            );
+            const idx = siblings.indexOf(entry.target);
+            setTimeout(() => entry.target.classList.add('is-visible'), idx * 70);
+            revealObserver.unobserve(entry.target);
+        });
+    }, { threshold: 0.12 });
+    revealItems.forEach(el => revealObserver.observe(el));
+
+    // ── About section kép clip-path reveal ─────────────────
+    const aboutImg = document.querySelector('.about-image');
+    if (aboutImg) {
+        const showAboutImg = () => aboutImg.classList.add('is-visible');
+        const rect = aboutImg.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+            setTimeout(showAboutImg, 50);
+        } else {
+            const imgObserver = new IntersectionObserver(([entry]) => {
+                if (entry.isIntersecting) { showAboutImg(); imgObserver.disconnect(); }
+            }, { threshold: 0.1 });
+            imgObserver.observe(aboutImg);
+        }
+    }
+
+    // Active nav link based on scroll position
+    const sections = document.querySelectorAll('section[id], footer[id]');
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                navLinks.forEach(link => {
+                    const active = link.getAttribute('href') === `#${id}`;
+                    link.classList.toggle('text-secondary', active);
+                    link.classList.toggle('font-semibold', active);
+                    link.classList.toggle('text-on-surface-variant', !active);
+                });
+            }
+        });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
