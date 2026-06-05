@@ -211,19 +211,63 @@
         outline-offset: 2px;
     }
 
-    /* Mobile menu — grid-template-rows trick (compositor-friendly, avoids max-height) */
+    /* Mobile menu — full-screen overlay, GPU-only transform */
     #mobile-menu {
-        display: grid;
-        grid-template-rows: 0fr;
-        opacity: 0;
-        transition: grid-template-rows 0.3s ease-out, opacity 0.25s ease-out;
+        position: fixed;
+        inset: 0;
+        z-index: 49;
+        background: var(--tw-bg-opacity, 1);
+        background-color: #fffcfb;
+        transform: translateY(-100%);
+        transition: transform 300ms cubic-bezier(0.32, 0.72, 0, 1);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 80px 24px 48px;
     }
     #mobile-menu.open {
-        grid-template-rows: 1fr;
-        opacity: 1;
+        transform: translateY(0);
     }
     #mobile-menu > div {
-        overflow: hidden;
+        overflow: visible;
+    }
+
+    /* Menu link stagger — enters with menu */
+    #mobile-menu a {
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity 250ms var(--ease-out-expo),
+                    transform 250ms var(--ease-out-expo),
+                    color 150ms ease;
+    }
+    #mobile-menu.open a:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 80ms; }
+    #mobile-menu.open a:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 130ms; }
+    #mobile-menu.open a:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 180ms; }
+    #mobile-menu.open a:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 230ms; }
+
+    /* Hamburger icon crossfade */
+    #hamburger .icon-menu,
+    #hamburger .icon-close {
+        transition: opacity 150ms ease, transform 150ms ease;
+        position: absolute;
+    }
+    #hamburger .icon-close {
+        opacity: 0;
+        transform: rotate(-90deg);
+    }
+    #hamburger.is-open .icon-menu {
+        opacity: 0;
+        transform: rotate(90deg);
+    }
+    #hamburger.is-open .icon-close {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    /* Active press state on menu links */
+    #mobile-menu a:active {
+        transform: scale(0.97) translateY(0) !important;
+        opacity: 0.7 !important;
     }
 
     /* Card hover — explicit easing, touch guard, kép zoom 350ms */
@@ -274,22 +318,23 @@
         <!-- Mobile hamburger -->
         <button
             id="hamburger"
-            class="md:hidden p-2 rounded-lg hover:bg-surface-container transition-colors"
+            class="md:hidden p-2 rounded-lg relative w-10 h-10 flex items-center justify-center"
             aria-label="Menü megnyitása"
             aria-expanded="false"
             aria-controls="mobile-menu"
         >
-            <span class="material-symbols-outlined text-primary" aria-hidden="true">menu</span>
+            <span class="material-symbols-outlined text-primary icon-menu" aria-hidden="true">menu</span>
+            <span class="material-symbols-outlined text-primary icon-close" aria-hidden="true">close</span>
         </button>
     </div>
 
-    <!-- Mobile menu — grid-template-rows animated -->
-    <div id="mobile-menu">
-        <div class="flex flex-col px-margin-mobile pb-4 bg-surface border-t border-outline-variant/30">
-            <a class="font-label-md text-label-md uppercase tracking-widest text-secondary font-semibold py-3 border-b border-outline-variant/20" href="#home">Kezdőlap</a>
-            <a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-secondary py-3 border-b border-outline-variant/20 transition-colors" href="#menu">Kínálatunk</a>
-            <a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-secondary py-3 border-b border-outline-variant/20 transition-colors" href="#about">Rólunk</a>
-            <a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-secondary py-3 border-b border-outline-variant/20 transition-colors" href="#contact">Kapcsolat</a>
+    <!-- Mobile menu — full-screen overlay -->
+    <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigáció">
+        <div class="flex flex-col gap-2">
+            <a class="font-display-lg text-headline-md text-primary py-4 border-b border-outline-variant/20" href="#home">Kezdőlap</a>
+            <a class="font-display-lg text-headline-md text-on-surface-variant py-4 border-b border-outline-variant/20" href="#menu">Kínálatunk</a>
+            <a class="font-display-lg text-headline-md text-on-surface-variant py-4 border-b border-outline-variant/20" href="#about">Rólunk</a>
+            <a class="font-display-lg text-headline-md text-on-surface-variant py-4" href="#contact">Kapcsolat</a>
         </div>
     </div>
 </nav>
@@ -555,22 +600,29 @@
     // Mobile menu toggle
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
-    const hamburgerIcon = hamburger.querySelector('.material-symbols-outlined');
+
+    const closeMenu = () => {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('is-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Menü megnyitása');
+        document.body.style.overflow = '';
+    };
 
     hamburger.addEventListener('click', () => {
         const isOpen = mobileMenu.classList.toggle('open');
+        hamburger.classList.toggle('is-open', isOpen);
         hamburger.setAttribute('aria-expanded', String(isOpen));
-        hamburgerIcon.textContent = isOpen ? 'close' : 'menu';
         hamburger.setAttribute('aria-label', isOpen ? 'Menü bezárása' : 'Menü megnyitása');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
     mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.remove('open');
-            hamburger.setAttribute('aria-expanded', 'false');
-            hamburgerIcon.textContent = 'menu';
-            hamburger.setAttribute('aria-label', 'Menü megnyitása');
-        });
+        link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
     });
 
     // ── Bento grid kártyák stagger reveal ──────────────────
