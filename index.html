@@ -328,16 +328,17 @@
         </button>
     </div>
 
-    <!-- Mobile menu — full-screen overlay -->
-    <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigáció">
-        <div class="flex flex-col gap-2">
-            <a class="font-display-lg text-headline-md text-primary py-4 border-b border-outline-variant/20" href="#home">Kezdőlap</a>
-            <a class="font-display-lg text-headline-md text-on-surface-variant py-4 border-b border-outline-variant/20" href="#menu">Kínálatunk</a>
-            <a class="font-display-lg text-headline-md text-on-surface-variant py-4 border-b border-outline-variant/20" href="#about">Rólunk</a>
-            <a class="font-display-lg text-headline-md text-on-surface-variant py-4" href="#contact">Kapcsolat</a>
-        </div>
-    </div>
 </nav>
+
+<!-- Mobile menu — full-screen overlay, outside nav to avoid stacking context issues -->
+<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigáció">
+    <div class="flex flex-col gap-2">
+        <a class="font-display-lg text-headline-md text-primary py-4 border-b border-outline-variant/20" href="#home">Kezdőlap</a>
+        <a class="font-display-lg text-headline-md text-on-surface-variant py-4 border-b border-outline-variant/20" href="#menu">Kínálatunk</a>
+        <a class="font-display-lg text-headline-md text-on-surface-variant py-4 border-b border-outline-variant/20" href="#about">Rólunk</a>
+        <a class="font-display-lg text-headline-md text-on-surface-variant py-4" href="#contact">Kapcsolat</a>
+    </div>
+</div>
 
 <main id="main-content">
 
