@@ -179,10 +179,18 @@
         clip-path: inset(0 0 0% 0);
     }
 
-    /* ─── CTA gombok: scale transition hozzáadva ─────────── */
+    /* ─── CTA gombok ─────────────────────────────────────── */
     a.bg-secondary, button.bg-secondary {
-        transition: opacity 150ms ease,
+        transition: filter 150ms ease,
                     transform 130ms var(--ease-out-expo) !important;
+    }
+    a.bg-secondary:hover, button.bg-secondary:hover {
+        filter: brightness(1.12);
+        transform: translateY(-1px);
+    }
+    a.bg-secondary:active, button.bg-secondary:active {
+        filter: brightness(1.0);
+        transform: scale(0.97) translateY(0);
     }
 
     /* Reduced motion overrides */
@@ -260,7 +268,7 @@
         </ul>
 
         <!-- Desktop CTA -->
-        <a href="#contact" class="hidden md:block bg-secondary text-on-secondary px-6 py-2 font-label-md text-label-md uppercase tracking-widest hover:opacity-90 transition-opacity active:scale-95 rounded-lg">
+        <a href="#contact" class="hidden md:block bg-secondary text-on-secondary px-6 py-2 font-label-md text-label-md uppercase tracking-widest rounded-lg">
             Asztalfoglalás
         </a>
 
@@ -283,7 +291,7 @@
             <a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-secondary py-3 border-b border-outline-variant/20 transition-colors" href="#menu">Kínálatunk</a>
             <a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-secondary py-3 border-b border-outline-variant/20 transition-colors" href="#about">Rólunk</a>
             <a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-secondary py-3 border-b border-outline-variant/20 transition-colors" href="#contact">Kapcsolat</a>
-            <a href="#contact" class="mt-4 bg-secondary text-on-secondary px-6 py-3 font-label-md text-label-md uppercase tracking-widest text-center hover:opacity-90 transition-opacity rounded-lg">
+            <a href="#contact" class="mt-4 bg-secondary text-on-secondary px-6 py-3 font-label-md text-label-md uppercase tracking-widest text-center rounded-lg">
                 Asztalfoglalás
             </a>
         </div>
@@ -313,7 +321,7 @@
             <h1 class="hero-item font-display-lg text-surface mb-6 text-center" style="font-size: clamp(2.5rem, 7vw, 5rem); line-height: 1.05; letter-spacing: -0.02em;">Minden napra egy<br/>falat ünnep</h1>
             <p class="hero-item font-body-lg text-body-lg text-surface/75 mb-10 max-w-md">Kézműves csokoládék természetes alapanyagokból, tartósítószer és mesterséges adalékok nélkül.</p>
             <a
-                class="hero-item bg-secondary text-on-secondary px-10 py-4 font-label-md text-label-md uppercase tracking-widest hover:opacity-90 shadow-lg active:scale-95 rounded-lg"
+                class="hero-item bg-secondary text-on-secondary px-10 py-4 font-label-md text-label-md uppercase tracking-widest shadow-lg rounded-lg"
                 href="#menu"
             >
                 Kínálatunk megtekintése
