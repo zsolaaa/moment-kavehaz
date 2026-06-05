@@ -170,13 +170,16 @@
         transform: translateY(0);
     }
 
-    /* ─── About kép clip-path reveal ─────────────────────── */
+    /* ─── About kép reveal ───────────────────────────────── */
     .about-image {
-        clip-path: inset(0 0 100% 0);
-        transition: clip-path 900ms var(--ease-in-out-strong);
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 700ms var(--ease-out-expo),
+                    transform 700ms var(--ease-out-expo);
     }
     .about-image.is-visible {
-        clip-path: inset(0 0 0% 0);
+        opacity: 1;
+        transform: translateY(0);
     }
 
     /* ─── CTA gombok ─────────────────────────────────────── */
@@ -199,7 +202,7 @@
         .group:hover img { transform: none !important; }
         .hero-item { transition: none; }
         .reveal { transition: none; opacity: 1; transform: none; }
-        .about-image { transition: none; clip-path: none; }
+        .about-image { transition: none; opacity: 1; transform: none; }
     }
 
     /* Focus ring */
