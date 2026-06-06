@@ -310,6 +310,7 @@
         <ul class="hidden md:flex gap-md items-center list-none m-0 p-0" role="list">
             <li><a class="font-label-md text-label-md uppercase tracking-widest text-secondary font-semibold transition-colors duration-200" href="#home">Kezdőlap</a></li>
             <li><a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors duration-200" href="#menu">Kínálatunk</a></li>
+            <li><a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors duration-200" href="#services">Szolgáltatások</a></li>
             <li><a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors duration-200" href="#about">Rólunk</a></li>
             <li><a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors duration-200" href="#contact">Kapcsolat</a></li>
         </ul>
@@ -335,6 +336,7 @@
     <div class="flex flex-col gap-2">
         <a class="font-display-lg text-headline-md text-primary py-4 border-b border-outline-variant/20" href="#home">Kezdőlap</a>
         <a class="font-display-lg text-headline-md text-on-surface-variant py-4 border-b border-outline-variant/20" href="#menu">Kínálatunk</a>
+        <a class="font-display-lg text-headline-md text-on-surface-variant py-4 border-b border-outline-variant/20" href="#services">Szolgáltatások</a>
         <a class="font-display-lg text-headline-md text-on-surface-variant py-4 border-b border-outline-variant/20" href="#about">Rólunk</a>
         <a class="font-display-lg text-headline-md text-on-surface-variant py-4" href="#contact">Kapcsolat</a>
     </div>
@@ -491,45 +493,41 @@
     </section>
 
     <!-- Szolgáltatások Section -->
-    <section class="py-xl bg-surface-container" id="services" aria-labelledby="services-heading">
+    <section class="py-xl bg-surface-container-low" id="services" aria-labelledby="services-heading">
         <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
-            <h2 id="services-heading" class="font-display-lg text-headline-md text-primary mb-xl text-center">Szolgáltatások</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-lg text-center">
+            <h2 id="services-heading" class="font-display-lg text-headline-md text-primary mb-xl">Szolgáltatások</h2>
+            <div class="flex flex-col divide-y divide-outline-variant/30">
 
-                <!-- Workshop -->
-                <div class="reveal flex flex-col items-center gap-sm">
-                    <div class="w-16 h-16 rounded-full bg-surface flex items-center justify-center shadow-sm mb-sm">
-                        <span class="material-symbols-outlined text-primary text-2xl" aria-hidden="true">shopping_bag</span>
+                <div class="reveal grid md:grid-cols-[80px_1fr] gap-md py-lg items-start">
+                    <span class="font-display-lg text-display-lg text-secondary/30 leading-none">01</span>
+                    <div>
+                        <h3 class="font-label-md text-label-md uppercase tracking-widest text-primary mb-sm">Workshop</h3>
+                        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Saját szervezésben vagy jelentkezés alapján a saját műhelyben.</p>
                     </div>
-                    <h3 class="font-label-md text-label-md uppercase tracking-widest text-primary">Workshop</h3>
-                    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Saját szervezésben vagy jelentkezés alapján a saját műhelyben.</p>
                 </div>
 
-                <!-- Bemutató -->
-                <div class="reveal flex flex-col items-center gap-sm">
-                    <div class="w-16 h-16 rounded-full bg-surface flex items-center justify-center shadow-sm mb-sm">
-                        <span class="material-symbols-outlined text-primary text-2xl" aria-hidden="true">location_on</span>
+                <div class="reveal grid md:grid-cols-[80px_1fr] gap-md py-lg items-start">
+                    <span class="font-display-lg text-display-lg text-secondary/30 leading-none">02</span>
+                    <div>
+                        <h3 class="font-label-md text-label-md uppercase tracking-widest text-primary mb-sm">Bemutató</h3>
+                        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Megkeresésre külső helyszínre települve céges ajándék, szülinap vagy tábor keretében.</p>
                     </div>
-                    <h3 class="font-label-md text-label-md uppercase tracking-widest text-primary">Bemutató</h3>
-                    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Megkeresésre külső helyszínre települve céges ajándék, szülinap vagy tábor keretében.</p>
                 </div>
 
-                <!-- Céges ajándékok -->
-                <div class="reveal flex flex-col items-center gap-sm">
-                    <div class="w-16 h-16 rounded-full bg-surface flex items-center justify-center shadow-sm mb-sm">
-                        <span class="material-symbols-outlined text-primary text-2xl" aria-hidden="true">card_giftcard</span>
+                <div class="reveal grid md:grid-cols-[80px_1fr] gap-md py-lg items-start">
+                    <span class="font-display-lg text-display-lg text-secondary/30 leading-none">03</span>
+                    <div>
+                        <h3 class="font-label-md text-label-md uppercase tracking-widest text-primary mb-sm">Céges ajándékok</h3>
+                        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Bon-bonválogatások, táblás csokoládék saját logóval.</p>
                     </div>
-                    <h3 class="font-label-md text-label-md uppercase tracking-widest text-primary">Céges ajándékok</h3>
-                    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Céges ajándékok bon-bonválogatások, táblás csokoládék saját logóval.</p>
                 </div>
 
-                <!-- Köszönő ajándékok -->
-                <div class="reveal flex flex-col items-center gap-sm">
-                    <div class="w-16 h-16 rounded-full bg-surface flex items-center justify-center shadow-sm mb-sm">
-                        <span class="material-symbols-outlined text-primary text-2xl" aria-hidden="true">favorite</span>
+                <div class="reveal grid md:grid-cols-[80px_1fr] gap-md py-lg items-start">
+                    <span class="font-display-lg text-display-lg text-secondary/30 leading-none">04</span>
+                    <div>
+                        <h3 class="font-label-md text-label-md uppercase tracking-widest text-primary mb-sm">Köszönő ajándékok</h3>
+                        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Esküvőre, szülinapra, céges rendezvényekre.</p>
                     </div>
-                    <h3 class="font-label-md text-label-md uppercase tracking-widest text-primary">Köszönő ajándékok</h3>
-                    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Köszönő ajándékok, esküvőre, szülinapra, céges rendezvényekre.</p>
                 </div>
 
             </div>
